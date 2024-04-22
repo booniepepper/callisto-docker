@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eu
+
+echo "\
+include \"cores/select.cal\"
+include \"std/io.cal\"
+include \"std/array.cal\"
+include \"std/common.cal\"
+
+$@" >>temp.cal
+
+# stderr redirection and exits are temporary until I figure out how to handle
+# them in the Factor code for Discord
+if ! 2>&1 cac -i /opt/callisto/std temp.cal -o temp >compile.log
+then
+  cat compile.log
+  exit 0
+fi
+2>&1 ./temp || exit 0
