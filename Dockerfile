@@ -13,6 +13,6 @@ RUN dub build
 WORKDIR "/tmp"
 
 ENV PATH="/opt/callisto:${PATH}"
-COPY eval .
+COPY eval /bin
 
 CMD ["cac"]

@@ -2,13 +2,15 @@
 
 set -eu
 
-echo "\
-include \"cores/select.cal\"
-include \"std/io.cal\"
-include \"std/array.cal\"
-include \"std/common.cal\"
+echo '
+include "cores/select.cal"
+include "std/io.cal"
+include "std/array.cal"
+include "std/nullterm.cal"
+include "std/ops.cal"
+include "std/random.cal"
 
-$@" >>temp.cal
+'"$@" >>temp.cal
 
 # stderr redirection and exits are temporary until I figure out how to handle
 # them in the Factor code for Discord
